@@ -4,19 +4,20 @@
 
 ### This whole branch is live for all addresses respectivly.
 
-index.md = Landing page
-readme.md = Landing page.
-Pegasus.html = meme.
-Called.html = Origional link
-
-
+# **!!!GBYAC.com IS LIVE!!!**
 
 License is CC
 
-!!!GBYAC.com IS LIVE!!!
+
 
 ## All FILES.
-Called.html - GBYAC CALLED.
+index.md = Landing page.
+
+readme.md = Landing page.
+
+Pegasus.html = meme.
+
+Called.html = Origional link.
 
 ## ToDo List Possibilities.
 
