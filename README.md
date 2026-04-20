@@ -5,16 +5,8 @@
 ### This whole branch is live for both addresses respectivly.
 https://jhernandez222.github.io/CALLED-TEST/testv1.html
 
-https://jhernandez222.github.io/CALLED-TEST/testv2.html
-
-https://jhernandez222.github.io/CALLED-TEST/testv2M.html
-
 ## All FILES.
-testv1.html - GBYAC CALLED.
-
-testv2.html - PEGASUS SPOOF Computer.
-
-testv2M.html - PEGASUS SPOOF Mobile.
+Called.html - GBYAC CALLED.
 
 ## ToDo List Possibilities.
 
