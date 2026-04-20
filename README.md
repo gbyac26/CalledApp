@@ -24,7 +24,4 @@ testv2M.html - PEGASUS SPOOF Mobile.
 - Add calander to front page?
 - More links?
 - Pictures/Logo?
-- Create personal or GBYAC Github.
-
-### PEGASUS Page
-- Create personal Github.
+- ~~Create personal or GBYAC Github. DONE
