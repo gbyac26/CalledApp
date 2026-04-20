@@ -2,8 +2,18 @@
 
 ### All of the links are ment to be used for NFC tags to help spread awareness.
 
-### This whole branch is live for both addresses respectivly.
-https://gbyac26.github.io/Called-App/Called.html
+### This whole branch is live for all addresses respectivly.
+
+index.md = Landing page
+readme.md = Landing page.
+Pegasus.html = meme.
+Called.html = Origional link
+
+
+
+License is CC
+
+!!!GBYAC.com IS LIVE!!!
 
 ## All FILES.
 Called.html - GBYAC CALLED.
