@@ -8,7 +8,7 @@
 ## All FOLDERS.
 ##### pdf = PDF storage.
 ##### images = Picture storage.
-##### Parts to Create Books page = Files for books page creation.
+##### Parts to Create Books Page = Files for books page creation.
 
 ## All FILES.
 ##### index.md = Landing page.
