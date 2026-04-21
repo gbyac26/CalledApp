@@ -80,14 +80,21 @@ mark {
 </style>
 </head>
 
+
 <body>
 <div class="container">
   <h1>Catholic Library</h1>
+
+  <!-- ✅ BOOK COUNTER (DIRECTLY UNDER TITLE) -->
+  <div id="bookCount" style="margin: 4px 0 16px 0; font-weight: 600;">
+    Books: 0
+  </div>
 
   <div class="search-wrapper">
     <input id="searchInput" placeholder="Search books..." oninput="filterBooks()">
     <button id="clearBtn" onclick="clearSearch()">×</button>
   </div>
+
 
   <div class="library">
 <a class="book" href="https://archive.org/details/imitationchrist00unkngoog/page/n4/mode/2up"" target="_blank">
