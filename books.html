@@ -4,33 +4,105 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Catholic Library</title>
+
 <style>
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  background:#ffe888;margin:0;padding:20px;color:#1c1c1e
+* {
+  box-sizing: border-box; /* ✅ CRITICAL FIX */
 }
-.container{
-  max-width:900px;margin:auto;background:#fff;border-radius:16px;
-  padding:24px;box-shadow:0 8px 20px rgba(0,0,0,.08)
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #ffe888;
+  margin: 0;
+  padding: 20px;
+  color: #1c1c1e;
 }
-.library{display:flex;flex-direction:column}
-.book{
-  display:block;
-  background:#f2f2f7;
-  border-radius:10px;
-  padding:14px 16px;
-  margin-bottom:10px;   /* ✅ uniform spacing */
-  text-decoration:none;
-  color:#000
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
 }
-.book:hover{background:#e6e6eb}
-.title{font-size:15px;font-weight:600}
+
+/* ✅ SEARCH BAR */
+.search-wrapper {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 12px 42px 12px 14px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-wrapper button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  line-height: 1;
+}
+
+/* ✅ BOOK LIST */
+.library {
+  display: flex;
+  flex-direction: column;
+}
+
+.book {
+  display: block;
+  background: #f2f2f7;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.book:hover {
+  background: #e6e6eb;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ✅ HIGHLIGHT */
+mark {
+  background: #ffeb3b;
+  padding: 0;
+}
 </style>
 </head>
+
 <body>
 <div class="container">
-<h1>Catholic Library</h1>
-<div class="library">
+  <h1>Catholic Library</h1>
+
+  <div class="search-wrapper">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search books..."
+      oninput="filterBooks()"
+    />
+    <button id="clearBtn" onclick="clearSearch()">×</button>
+  </div>
+
+  <div class="library">
 <a class="book" href="https://isidore.co/calibre/browse/book/5551"" target="_blank">
   <div class="title">Gregory the Great (J. Moorhead) – pdf</div>
 </a>
@@ -7036,125 +7108,47 @@ body{
 <a class="book" href="http://www.obrascatolicas.com/livros/Apologetica/index_forbidden_books.pdf"" target="_blank">
   <div class="title">Index of Forbidden Books (1948) – pdf</div>
 </a>
-<a class="book" href="https://www.youtube.com/watch?v=OyIN6taZBC8"" target="_blank">
-  <div class="title">Gregorian chant – Benedictines of Ligugé – CD 1 &amp;amp; CD 2</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=x_FRuDCzlm0"" target="_blank">
-  <div class="title">Gregorian chant – Abbey of Santo Domingo de Silos</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=2H9ZuoJkviY"" target="_blank">
-  <div class="title">Benedictine monks of Santo Domingo de Silos</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=JolNT2D7x34"" target="_blank">
-  <div class="title">Gregorian chant – Benedictines of Santo Domingo de Silos</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=eC6OKIYXBxQ&amp;index=8&amp;list=RDOyIN6taZBC8"" target="_blank">
-  <div class="title">Gregorian chant of Assisi (Medieval lauds)</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=D6Y2e4CXg8s&amp;index=6&amp;list=RDOyIN6taZBC8"" target="_blank">
-  <div class="title">Gregorian chant – Abbey of Grimbergen</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=s7GqDZiI7d4"" target="_blank">
-  <div class="title">Gregorian chant – Abbey of Notre Dame</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=KDJtBh3LGJg&amp;list=PL8D7626FF02034E57"" target="_blank">
-  <div class="title">Old Roman chant of the 6th century – Ensemble Organum (16 audios)</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=XbP9xzpBs1U"" target="_blank">
-  <div class="title">Gregorian: Requiem – Abbey of Ligugé</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=c9p6HPOx1CA&amp;index=15&amp;list=RDOyIN6taZBC8"" target="_blank">
-  <div class="title">Popular Gregorian hymns – Abbey of Notre-Dame de Timadeuc</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=2OiPTT9-UKA"" target="_blank">
-  <div class="title">Gregorian chant – Cistercian Abbey of Flaran</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=XcP2YW5mhPg"" target="_blank">
-  <div class="title">Gregorian chant – Cistercian Abbey of Heiligenkreuz</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=cCWoWgU1Y6c"" target="_blank">
-  <div class="title">Medieval Gregorian chant</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=N6N1sdo6GYA"" target="_blank">
-  <div class="title">Gregorian chant: From Antiquity to the Renaissance</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=XT7hpyvAhwA"" target="_blank">
-  <div class="title">Gregorian chant – Benedictine monks of St. Michel</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=ImGMU63fRXo"" target="_blank">
-  <div class="title">Gregorian chant – Benedictines of Clervaux</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=EX3-K-YPzu8"" target="_blank">
-  <div class="title">Campus Stellae: Sacred chant of the 12th century</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=IhY9JX-R310&amp;list=RDIhY9JX-R310#t=0"" target="_blank">
-  <div class="title">Codex Calixtinus: Ad Vesperas Sancti Jacobi – Ensemble Organum</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=MmpNl__FDEU"" target="_blank">
-  <div class="title">Gregorian chant (Franciscan manuscripts of the 17-18th cent.) – Ensemble Organum</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=dBmB9KUoO5o"" target="_blank">
-  <div class="title">Gregorian chant – Benedictine nuns of San Pelayo, Oviedo</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=Kn6eUemXtyA"" target="_blank">
-  <div class="title">Plainchant and Polyphony of the 13th and 14th century</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=QV6SpwKSoQM"" target="_blank">
-  <div class="title">Gregorian chant – Psallentes</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=TN3rD28R8xg"" target="_blank">
-  <div class="title">Gregorian chant (various)</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=6TTJTQ24kTQ"" target="_blank">
-  <div class="title">Gregorian chant (London Oratory &amp;amp; Westminster Cathedral Choir)</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=nhaffKCNh5s"" target="_blank">
-  <div class="title">Abbey of Solesmes X (Christ the King)</div>
-</a>
-<a class="book" href="https://www.youtube.com/watch?v=0xwq3ffFP2g"" target="_blank">
-  <div class="title">Requiem – Solesmes</div>
-</a>
-<a class="book" href="http://www.ccel.org/"" target="_blank">
-  <div class="title">Countless other classics on Church history, doctrine, lives and thoughts of saints and Church Fathers (including all the volumes of “Nicene and Post-Nicene Fathers” and “Ante-Nicene Fathers”) can be downloaded at ccel.org. (The site unfortunately carries many Protestant books as well, so do your research to make sure any book you intend to read is Catholic and doctrinally sound.)</div>
-</a>
-<a class="book" href="http://www.freecatholicebooks.com/"" target="_blank">
-  <div class="title">Other websites I recommend for free Catholic books: freecatholicebooks.com, saintsbooks.net/BooksList.html,&amp;nbsp;catholicebooks.wordpress.com,&amp;nbsp;basilica.org/pages/ebooks.php, isidore.co, obrascatolicas.com, (rare/out of print books in Portuguese, Spanish and English), liberius.net/langues.php&amp;nbsp;(books in a dozen different languages).</div>
-</a>
-<a class="book" href="http://www.saintsbooks.net/BooksList.html"" target="_blank">
-  <div class="title">Other websites I recommend for free Catholic books: freecatholicebooks.com, saintsbooks.net/BooksList.html,&amp;nbsp;catholicebooks.wordpress.com,&amp;nbsp;basilica.org/pages/ebooks.php, isidore.co, obrascatolicas.com, (rare/out of print books in Portuguese, Spanish and English), liberius.net/langues.php&amp;nbsp;(books in a dozen different languages).</div>
-</a>
-<a class="book" href="https://catholicebooks.wordpress.com/subject/"" target="_blank">
-  <div class="title">Other websites I recommend for free Catholic books: freecatholicebooks.com, saintsbooks.net/BooksList.html,&amp;nbsp;catholicebooks.wordpress.com,&amp;nbsp;basilica.org/pages/ebooks.php, isidore.co, obrascatolicas.com, (rare/out of print books in Portuguese, Spanish and English), liberius.net/langues.php&amp;nbsp;(books in a dozen different languages).</div>
-</a>
-<a class="book" href="http://www.basilica.ca/elibrary"" target="_blank">
-  <div class="title">Other websites I recommend for free Catholic books: freecatholicebooks.com, saintsbooks.net/BooksList.html,&amp;nbsp;catholicebooks.wordpress.com,&amp;nbsp;basilica.org/pages/ebooks.php, isidore.co, obrascatolicas.com, (rare/out of print books in Portuguese, Spanish and English), liberius.net/langues.php&amp;nbsp;(books in a dozen different languages).</div>
-</a>
-<a class="book" href="https://isidore.co/calibre/"" target="_blank">
-  <div class="title">Other websites I recommend for free Catholic books: freecatholicebooks.com, saintsbooks.net/BooksList.html,&amp;nbsp;catholicebooks.wordpress.com,&amp;nbsp;basilica.org/pages/ebooks.php, isidore.co, obrascatolicas.com, (rare/out of print books in Portuguese, Spanish and English), liberius.net/langues.php&amp;nbsp;(books in a dozen different languages).</div>
-</a>
-<a class="book" href="http://obrascatolicas.com"" target="_blank">
-  <div class="title">Other websites I recommend for free Catholic books: freecatholicebooks.com, saintsbooks.net/BooksList.html,&amp;nbsp;catholicebooks.wordpress.com,&amp;nbsp;basilica.org/pages/ebooks.php, isidore.co, obrascatolicas.com, (rare/out of print books in Portuguese, Spanish and English), liberius.net/langues.php&amp;nbsp;(books in a dozen different languages).</div>
-</a>
-<a class="book" href="http://liberius.net/langues.php"" target="_blank">
-  <div class="title">Other websites I recommend for free Catholic books: freecatholicebooks.com, saintsbooks.net/BooksList.html,&amp;nbsp;catholicebooks.wordpress.com,&amp;nbsp;basilica.org/pages/ebooks.php, isidore.co, obrascatolicas.com, (rare/out of print books in Portuguese, Spanish and English), liberius.net/langues.php&amp;nbsp;(books in a dozen different languages).</div>
-</a>
-<a class="book" href="http://www.documentacatholicaomnia.eu/"" target="_blank">
-  <div class="title">For a vast quantity of texts, mostly in Latin, see&amp;nbsp;DocumentaCatholicaOmnia.eu. &amp;nbsp;The&amp;nbsp;Vatican Library – digitized – is here:&amp;nbsp;</div>
-</a>
-<a class="book" href="http://digi.vatlib.it/mss/"" target="_blank">
-  <div class="title">For a vast quantity of texts, mostly in Latin, see&amp;nbsp;DocumentaCatholicaOmnia.eu. &amp;nbsp;The&amp;nbsp;Vatican Library – digitized – is here:&amp;nbsp;</div>
-</a>
-<a class="book" href="http://digi.vatlib.it/mss/</a>.</p>" target="_blank">
-  <div class="title">For a vast quantity of texts, mostly in Latin, see&amp;nbsp;DocumentaCatholicaOmnia.eu. &amp;nbsp;The&amp;nbsp;Vatican Library – digitized – is here:&amp;nbsp;</div>
-</a>
-<a class="book" href="http://archive.org/details/texts"" target="_blank">
-  <div class="title">If you know the name of the book, author or topic,&amp;nbsp;archive.org/details/texts and openlibrary.org are also helpful.</div>
-</a>
-<a class="book" href="http://openlibrary.org"" target="_blank">
-  <div class="title">If you know the name of the book, author or topic,&amp;nbsp;archive.org/details/texts and openlibrary.org are also helpful.</div>
-</a>
 
+
+  </div>
 </div>
-</div>
+
+<script>
+function filterBooks() {
+  const input = document.getElementById("searchInput");
+  const filter = input.value.toLowerCase();
+  const books = document.getElementsByClassName("book");
+  const clearBtn = document.getElementById("clearBtn");
+
+  clearBtn.style.display = filter ? "block" : "none";
+
+  for (let book of books) {
+    const titleEl = book.querySelector(".title");
+    const text = titleEl.textContent;
+    titleEl.innerHTML = text;
+
+    if (text.toLowerCase().includes(filter)) {
+      book.style.display = "";
+      if (filter) {
+        const regex = new RegExp("(" + escapeRegExp(filter) + ")", "ig");
+        titleEl.innerHTML = text.replace(regex, "<mark>$1</mark>");
+      }
+    } else {
+      book.style.display = "none";
+    }
+  }
+}
+
+function clearSearch() {
+  document.getElementById("searchInput").value = "";
+  document.getElementById("clearBtn").style.display = "none";
+  filterBooks();
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+</script>
+
 </body>
 </html>
