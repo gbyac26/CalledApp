@@ -12,7 +12,7 @@
 
 ## All FILES.
 ##### index.md = Landing page.
-##### readme.md = Landing page.
+##### ReadAboutMe.md = Markdown file to explain.
 ##### Pegasus.html = Meme.
 ##### Called.html = Origional link.
 ##### books.html = Links to books!
