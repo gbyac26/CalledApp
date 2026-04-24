@@ -34,7 +34,7 @@
 ##### Instagram top 3 post embeded.
 ##### possible links / link to library.
 ##### An about GBYAC
-##### Background color 
+##### Background color background: #ffe888;
 
 Sharing events for Catholics 18-30(ish)
 Not affiliated with any parish or diocese
