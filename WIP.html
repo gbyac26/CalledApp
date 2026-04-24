@@ -29,6 +29,7 @@ body {
   .layout { grid-template-columns: 1fr; }
 }
 
+/* ===== CARDS ===== */
 .card {
   background: #fff;
   border-radius: 16px;
@@ -37,22 +38,16 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-/* ===== HERO (NOW INCLUDES ABOUT) ===== */
+/* ===== HERO ===== */
 .hero {
   text-align: center;
-  padding: 30px 20px;
 }
 
-.hero h1 {
-  margin-bottom: 10px;
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: relative;
 }
 
-.hero p {
-  margin: 6px 0;
-  color: #444;
-}
-
-/* SIDEBAR */
 .nav-link {
   display: block;
   padding: 12px;
@@ -61,7 +56,35 @@ body {
   background: #f2f2f7;
 }
 
-/* CALENDAR */
+/* ===== MOBILE MENU BUTTON (3 DOTS) ===== */
+.menu-btn {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  padding: 10px 14px;
+  background: #f2f2f7;
+  border-radius: 10px;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+/* mobile sidebar behavior */
+@media (max-width: 900px) {
+
+  .menu-btn {
+    display: block;
+  }
+
+  .sidebar-links {
+    display: none;
+  }
+
+  .sidebar.open .sidebar-links {
+    display: block;
+  }
+}
+
+/* ===== CALENDAR ===== */
 .calendar-header {
   display: flex;
   justify-content: space-between;
@@ -74,10 +97,6 @@ body {
   padding: 6px 12px;
   border-radius: 8px;
   background: #f2f2f7;
-}
-
-.arrow:hover {
-  background: #e5e5ea;
 }
 
 .weekdays {
@@ -122,7 +141,7 @@ body {
   background: transparent;
 }
 
-/* INSTAGRAM */
+/* ===== INSTAGRAM ===== */
 .instagram-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -137,20 +156,15 @@ body {
   color: #666;
 }
 
-/* ===== FEATURE IMAGE (UPDATED) ===== */
-.feature-wrapper {
-  padding: 0;
-  overflow: hidden;
-  text-align: center;
-}
-
-.feature-image {
+/* ===== FULL WIDTH IMAGE (NO BOX) ===== */
+.full-image {
   width: 100%;
-  max-width: 900px;   /* controls overall size */
-  height: auto;       /* keeps aspect ratio */
-  display: inline-block;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  max-width: 1200px;
+  height: auto;
+  display: block;
+  margin: 30px auto 0 auto;
+  border-radius: 0;      /* removes card feel */
+  box-shadow: none;      /* removes white box effect */
 }
 </style>
 </head>
@@ -159,11 +173,10 @@ body {
 
 <div class="container">
 
-  <!-- HERO (ABOUT MERGED HERE) -->
+  <!-- HERO -->
   <div class="card hero">
     <h1>Green Bay Young Adult Catholic</h1>
-
-    <p><strong>Sharing events for Catholics ages 18–30(ish)</strong></p>
+    <p>Sharing events for Catholics 18–30(ish)</p>
     <p>Not affiliated with any parish or diocese</p>
     <p>Submit an event or join our group!</p>
   </div>
@@ -171,18 +184,25 @@ body {
   <div class="layout">
 
     <!-- SIDEBAR -->
-    <aside class="card">
-      <a class="nav-link" href="#">Submit an Event</a>
+    <aside class="card sidebar" id="sidebar">
 
-      <a class="nav-link" href="https://gbyac.com/Called.html">
-        Join Our Group
-      </a>
+      <!-- 3 DOT BUTTON (MOBILE ONLY) -->
+      <div class="menu-btn" onclick="toggleMenu()">⋯</div>
 
-      <a class="nav-link" href="https://gbyac.com/books">
-        Catholic Library
-      </a>
+      <div class="sidebar-links">
+        <a class="nav-link" href="#">Submit an Event</a>
 
-      <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="https://gbyac.com/Called.html">
+          Join Our Group
+        </a>
+
+        <a class="nav-link" href="https://gbyac.com/books">
+          Catholic Library
+        </a>
+
+        <a class="nav-link" href="#">Contact</a>
+      </div>
+
     </aside>
 
     <!-- MAIN -->
@@ -211,17 +231,9 @@ body {
         <h2>From Instagram</h2>
         <div class="instagram-grid">
 
-          <div class="instagram-placeholder">
-            Paste Instagram embed code here
-          </div>
-
-          <div class="instagram-placeholder">
-            Paste Instagram embed code here
-          </div>
-
-          <div class="instagram-placeholder">
-            Paste Instagram embed code here
-          </div>
+          <div class="instagram-placeholder">Embed Post 1</div>
+          <div class="instagram-placeholder">Embed Post 2</div>
+          <div class="instagram-placeholder">Embed Post 3</div>
 
         </div>
       </div>
@@ -229,30 +241,29 @@ body {
     </main>
   </div>
 
-  <!-- IMAGE (BOTTOM, CLEAN SIZE + ORIGINAL RATIO) -->
-  <div class="card feature-wrapper">
-    <img
-      src="images/Screenshot_20260420_1330221_Instagram.jpg"
-      alt="GBYAC Highlight"
-      class="feature-image"
-    >
-  </div>
-
-  <div style="text-align:center; margin-top:20px; font-size:13px; color:#888;">
-    Powered by Jesus Christ
-  </div>
-
 </div>
 
+<!-- FULL WIDTH IMAGE (NO WHITE BOX) -->
+<img
+  src="images/Screenshot_20260420_1330221_Instagram.jpg"
+  alt="GBYAC Highlight"
+  class="full-image"
+/>
+
 <script>
-// EVENTS
+// ===== MOBILE MENU =====
+function toggleMenu() {
+  document.getElementById("sidebar").classList.toggle("open");
+}
+
+// ===== EVENTS =====
 const events = {
   "2026-04-14": [
     "Young Adult Mass<br>6:30 PM – St. Mary’s Church"
   ]
 };
 
-// DATE STATE
+// ===== CALENDAR =====
 let currentDate = new Date();
 
 const months = [
@@ -303,8 +314,8 @@ function renderCalendar() {
   }
 }
 
-function changeMonth(direction) {
-  currentDate.setMonth(currentDate.getMonth() + direction);
+function changeMonth(dir) {
+  currentDate.setMonth(currentDate.getMonth() + dir);
   renderCalendar();
 }
 
