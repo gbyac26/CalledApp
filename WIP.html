@@ -29,7 +29,7 @@ body {
   .layout { grid-template-columns: 1fr; }
 }
 
-/* ===== CARDS ===== */
+/* ===== CARD ===== */
 .card {
   background: #fff;
   border-radius: 16px;
@@ -221,14 +221,14 @@ body {
 <script>
 
 /* =========================
-   MOBILE MENU
+   MENU TOGGLE
 ========================= */
 function toggleMenu() {
   document.getElementById("sidebar").classList.toggle("open");
 }
 
 /* =========================
-   1. ONE-TIME EVENTS
+   ONE-TIME EVENTS
 ========================= */
 const oneTimeEvents = {
   "2026-04-14": [
@@ -240,17 +240,22 @@ const oneTimeEvents = {
 };
 
 /* =========================
-   2. RECURRING EVENTS
+   RECURRING EVENTS
+   - infinite OR limited
 ========================= */
 const recurringEvents = [
   {
     name: "Bible Study<br>7:00 PM – Parish Hall",
-    dayOfWeek: 4, // Thursday
-    excludeDates: ["2026-05-01"]
+    dayOfWeek: 4,          // Thursday
+    startDate: "2026-04-01",
+    occurrences: 6,        // stops after 6 times
+    excludeDates: []
   },
   {
     name: "Sunday Fellowship<br>After Mass",
-    dayOfWeek: 0, // Sunday
+    dayOfWeek: 0,          // Sunday
+    startDate: "2026-04-01",
+    occurrences: null,     // null = infinite
     excludeDates: []
   }
 ];
@@ -304,7 +309,7 @@ function renderCalendar() {
     let html = `<span>${d}</span>`;
 
     /* =========================
-       A) ONE-TIME EVENTS
+       ONE-TIME EVENTS
     ========================= */
     if (oneTimeEvents[dateStr]) {
       oneTimeEvents[dateStr].forEach(ev => {
@@ -313,14 +318,42 @@ function renderCalendar() {
     }
 
     /* =========================
-       B) RECURRING EVENTS
+       RECURRING EVENTS
     ========================= */
     recurringEvents.forEach(ev => {
 
-      const matchDay = ev.dayOfWeek === weekday;
-      const excluded = ev.excludeDates.includes(dateStr);
+      const start = new Date(ev.startDate);
+      const afterStart = dateObj >= start;
+      const isMatchDay = weekday === ev.dayOfWeek;
+      const isExcluded = ev.excludeDates.includes(dateStr);
 
-      if (matchDay && !excluded) {
+      if (!afterStart || !isMatchDay || isExcluded) return;
+
+      // If limited occurrences
+      if (ev.occurrences !== null) {
+
+        let count = 0;
+        let temp = new Date(ev.startDate);
+
+        while (temp <= dateObj) {
+
+          if (
+            temp.getDay() === ev.dayOfWeek &&
+            !ev.excludeDates.includes(temp.toISOString().split("T")[0]) &&
+            temp >= start
+          ) {
+            count++;
+          }
+
+          temp.setDate(temp.getDate() + 1);
+        }
+
+        if (count <= ev.occurrences) {
+          html += `<div class="event">${ev.name}</div>`;
+        }
+
+      } else {
+        // infinite recurring
         html += `<div class="event">${ev.name}</div>`;
       }
     });
@@ -331,7 +364,7 @@ function renderCalendar() {
 }
 
 /* =========================
-   MONTH CHANGE
+   MONTH NAV
 ========================= */
 function changeMonth(dir) {
   currentDate.setMonth(currentDate.getMonth() + dir);
