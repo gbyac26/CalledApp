@@ -6,7 +6,6 @@
 <title>Green Bay Young Adult Catholic</title>
 
 <style>
-/* ===== GLOBAL ===== */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -20,9 +19,6 @@ body {
   padding: 16px;
 }
 
-a { text-decoration: none; color: inherit; }
-
-/* ===== LAYOUT ===== */
 .layout {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -33,23 +29,15 @@ a { text-decoration: none; color: inherit; }
   .layout { grid-template-columns: 1fr; }
 }
 
-/* ===== CARDS ===== */
 .card {
-  background: #ffffff;
+  background: #fff;
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-/* ===== HERO ===== */
-.hero {
-  text-align: center;
-  padding: 30px 20px;
-}
-
-/* ===== SIDEBAR / LINK TREE ===== */
-.sidebar h3 { margin-top: 0; }
+.hero { text-align: center; }
 
 .nav-link {
   display: block;
@@ -57,12 +45,35 @@ a { text-decoration: none; color: inherit; }
   margin-bottom: 10px;
   border-radius: 10px;
   background: #f2f2f7;
-  font-weight: 500;
 }
-.nav-link:hover { background: #e5e5ea; }
 
 /* ===== CALENDAR ===== */
-.calendar-month { display: none; }
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  cursor: pointer;
+  font-size: 22px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #f2f2f7;
+}
+
+.arrow:hover {
+  background: #e5e5ea;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #6b6b6b;
+}
 
 .calendar-grid {
   display: grid;
@@ -79,7 +90,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .day span {
-  font-weight: 700;
+  font-weight: bold;
   display: block;
   margin-bottom: 6px;
 }
@@ -93,7 +104,11 @@ a { text-decoration: none; color: inherit; }
   margin-top: 6px;
 }
 
-/* ===== INSTAGRAM ===== */
+.empty {
+  background: transparent;
+}
+
+/* INSTAGRAM */
 .instagram-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -103,17 +118,9 @@ a { text-decoration: none; color: inherit; }
 .instagram-placeholder {
   background: #f2f2f7;
   border-radius: 14px;
-  padding: 20px;
+  padding: 40px 20px;
   text-align: center;
   color: #666;
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  text-align: center;
-  font-size: 13px;
-  color: #8e8e93;
-  margin: 30px 0 10px;
 }
 </style>
 </head>
@@ -125,453 +132,49 @@ a { text-decoration: none; color: inherit; }
   <!-- HERO -->
   <div class="card hero">
     <h1>Green Bay Young Adult Catholic</h1>
-    <p>Connecting Catholics ages 18–30(ish) through events & community</p>
+    <p>Connecting Catholics ages 18–30(ish)</p>
   </div>
 
   <div class="layout">
 
-    <!-- LINK TREE -->
-    <aside class="card sidebar">
-      <h3>Explore</h3>
+    <!-- SIDEBAR -->
+    <aside class="card">
       <a class="nav-link" href="#">Submit an Event</a>
       <a class="nav-link" href="#">Join Our Group</a>
       <a class="nav-link" href="#">Resources Library</a>
       <a class="nav-link" href="#">Contact</a>
     </aside>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <main>
 
       <!-- ABOUT -->
       <div class="card">
-        <h2>About</h2>
+        <h2>About GBYAC</h2>
         <p>
-          Green Bay Young Adult Catholic shares and promotes events for Catholics
-          ages <strong>18–30(ish)</strong> in the Green Bay area.
+          Sharing events for Catholics ages <strong>18–30(ish)</strong>.
+          <br><br>
+          Not affiliated with any parish or diocese.
+          <br><br>
+          Submit an event or join our group!
         </p>
-        <p><strong>Not affiliated with any parish or diocese.</strong></p>
-        <p>Anyone may submit an event or join our group!</p>
       </div>
 
       <!-- CALENDAR -->
       <div class="card">
-        <h2 id="monthTitle"></h2>
 
-<!-- JANUARY (31) -->
-<div class="calendar-month" data-month="0"><div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-<div class="day"><span>30</span></div>
-<div class="day"><span>31</span></div>
-</div></div>
+        <div class="calendar-header">
+          <div class="arrow" onclick="changeMonth(-1)">←</div>
+          <h2 id="monthTitle"></h2>
+          <div class="arrow" onclick="changeMonth(1)">→</div>
+        </div>
 
-<!-- FEBRUARY (29) -->
-<div class="calendar-month" data-month="1"><div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-</div></div>
+        <div class="weekdays">
+          <div>Sun</div><div>Mon</div><div>Tue</div>
+          <div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+        </div>
 
-<!-- MARCH (31) -->
-<div class="calendar-month" data-month="2"><div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-<div class="day"><span>30</span></div>
-<div class="day"><span>31</span></div>
-</div></div>
-
-<!-- APRIL (30) -->
-<div class="calendar-month" data-month="3"><div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-<div class="day"><span>30</span></div>
-</div></div>
-
-<!-- MAY (31) -->
-<div class="calendar-month" data-month="4"><div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-<div class="day"><span>30</span></div>
-<div class="day"><span>31</span></div>
-</div></div>
-
-<!-- JUNE (30) -->
-<div class="calendar-month" data-month="5">
-<div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-<div class="day"><span>30</span></div>
-</div></div>
-
-<!-- JULY (31) -->
-<div class="calendar-month" data-month="6"><div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-<div class="day"><span>30</span></div>
-<div class="day"><span>31</span></div>
-</div></div>
-
-<!-- AUGUST (31) -->
-<div class="calendar-month" data-month="7"><div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-<div class="day"><span>30</span></div>
-<div class="day"><span>31</span></div>
-</div></div>
-
-<!-- SEPTEMBER (30) -->
-<div class="calendar-month" data-month="8"><div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-<div class="day"><span>30</span></div>
-</div></div>
-
-<!-- OCTOBER (31) -->
-<div class="calendar-month" data-month="9"><div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-<div class="day"><span>30</span></div>
-<div class="day"><span>31</span></div>
-</div></div>
-
-<!-- NOVEMBER (30) -->
-<div class="calendar-month" data-month="10"><div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-<div class="day"><span>30</span></div>
-</div></div>
-
-<!-- DECEMBER (31) -->
-<div class="calendar-month" data-month="11"><div class="calendar-grid">
-<div class="day"><span>1</span></div>
-<div class="day"><span>2</span></div>
-<div class="day"><span>3</span></div>
-<div class="day"><span>4</span></div>
-<div class="day"><span>5</span></div>
-<div class="day"><span>6</span></div>
-<div class="day"><span>7</span></div>
-<div class="day"><span>8</span></div>
-<div class="day"><span>9</span></div>
-<div class="day"><span>10</span></div>
-<div class="day"><span>11</span></div>
-<div class="day"><span>12</span></div>
-<div class="day"><span>13</span></div>
-<div class="day"><span>14</span></div>
-<div class="day"><span>15</span></div>
-<div class="day"><span>16</span></div>
-<div class="day"><span>17</span></div>
-<div class="day"><span>18</span></div>
-<div class="day"><span>19</span></div>
-<div class="day"><span>20</span></div>
-<div class="day"><span>21</span></div>
-<div class="day"><span>22</span></div>
-<div class="day"><span>23</span></div>
-<div class="day"><span>24</span></div>
-<div class="day"><span>25</span></div>
-<div class="day"><span>26</span></div>
-<div class="day"><span>27</span></div>
-<div class="day"><span>28</span></div>
-<div class="day"><span>29</span></div>
-<div class="day"><span>30</span></div>
-<div class="day"><span>31</span></div>
-</div></div>
-        <!-- Repeat same explicit structure for March–December -->
+        <div id="calendar" class="calendar-grid"></div>
 
       </div>
 
@@ -579,37 +182,100 @@ a { text-decoration: none; color: inherit; }
       <div class="card">
         <h2>From Instagram</h2>
         <div class="instagram-grid">
-          <div class="instagram-placeholder">ENTER LINK HERE</div>
-          <div class="instagram-placeholder">ENTER LINK HERE</div>
-          <div class="instagram-placeholder">ENTER LINK HERE</div>
+
+          <!-- REPLACE WITH YOUR EMBED LINKS -->
+          <div class="instagram-placeholder">
+            Paste Instagram embed code here
+          </div>
+
+          <div class="instagram-placeholder">
+            Paste Instagram embed code here
+          </div>
+
+          <div class="instagram-placeholder">
+            Paste Instagram embed code here
+          </div>
+
         </div>
       </div>
 
     </main>
   </div>
 
-  <div class="footer">
+  <div style="text-align:center; margin-top:20px; font-size:13px; color:#888;">
     Powered by Jesus Christ
   </div>
 
 </div>
 
 <script>
+// ===== EVENTS =====
+const events = {
+  "2026-04-14": [
+    "Young Adult Mass<br>6:30 PM – St. Mary’s Church"
+  ]
+};
+
+// ===== DATE STATE =====
+let currentDate = new Date();
+
 const months = [
   "January","February","March","April","May","June",
   "July","August","September","October","November","December"
 ];
 
-const now = new Date();
-const m = now.getMonth();
+// ===== RENDER FUNCTION =====
+function renderCalendar() {
 
-document.getElementById("monthTitle").innerText = months[m] + " Events";
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
 
-document.querySelectorAll(".calendar-month").forEach(el => {
-  if (parseInt(el.dataset.month) === m) {
-    el.style.display = "block";
+  document.getElementById("monthTitle").innerText =
+    months[month] + " " + year;
+
+  const calendar = document.getElementById("calendar");
+  calendar.innerHTML = "";
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement("div");
+    empty.className = "day empty";
+    calendar.appendChild(empty);
   }
-});
+
+  for (let d = 1; d <= daysInMonth; d++) {
+
+    const dateStr =
+      year + "-" +
+      String(month + 1).padStart(2, '0') + "-" +
+      String(d).padStart(2, '0');
+
+    const day = document.createElement("div");
+    day.className = "day";
+
+    let html = `<span>${d}</span>`;
+
+    if (events[dateStr]) {
+      events[dateStr].forEach(ev => {
+        html += `<div class="event">${ev}</div>`;
+      });
+    }
+
+    day.innerHTML = html;
+    calendar.appendChild(day);
+  }
+}
+
+// ===== MONTH NAV =====
+function changeMonth(direction) {
+  currentDate.setMonth(currentDate.getMonth() + direction);
+  renderCalendar();
+}
+
+// INIT
+renderCalendar();
 </script>
 
 </body>
