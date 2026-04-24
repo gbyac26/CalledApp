@@ -22,20 +22,21 @@
 ### Called link Page
 ##### - ~~Domain for GBYAC.com $11.08.~~ DONE
 #####   - ~~Can be hosted on Github for free.~~ DONE
-##### - Add calander to front page?
-##### - More links?
+##### - ~~Add calander to front page?~~ DONE
+##### - ~~More links?~~ DONE
 ##### - Pictures/Logo? kinda.
 ##### - ~~Create personal or GBYAC Github.~~ DONE
-##### - Instagram feed?
+##### - ~~Instagram feed?~~ DONE
 ##### - ~~Books!~~ DONE
 
 ## Landing Page Ideas
-##### Calander of events / how to scrape called for events.
-##### Instagram top 3 post embeded.
-##### possible links / link to library.
-##### An about GBYAC
-##### Background color background: #ffe888;
-
-Sharing events for Catholics 18-30(ish)
-Not affiliated with any parish or diocese
-Submit an event or join our group!
+##### - ~~Calander of events / how to scrape called for events.~~ DONE
+#####   - Add actual events.
+##### - ~~Instagram top 3 post embeded.~~ DONE
+#####   - Add actual Instagram links.
+##### - ~~Possible links / link to library.~~ DONE
+##### - ~~Background color background: #ffe888;.~~ DONE
+##### - ~~An about GBYAC~~ DONE
+#####   - ~~Sharing events for Catholics 18-30(ish).~~ DONE
+#####   - ~~Not affiliated with any parish or diocese.~~ DONE
+#####   - ~~Submit an event or join our group!~~ DONE
