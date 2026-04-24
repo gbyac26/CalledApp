@@ -56,7 +56,15 @@ body {
   background: #f2f2f7;
 }
 
-/* ===== MOBILE MENU BUTTON (3 DOTS) ===== */
+/* ===== MOBILE MENU ROW ===== */
+.menu-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* 3 DOT BUTTON */
 .menu-btn {
   display: none;
   font-size: 26px;
@@ -65,7 +73,14 @@ body {
   background: #f2f2f7;
   border-radius: 10px;
   width: fit-content;
-  margin-bottom: 10px;
+}
+
+/* TEXT NEXT TO DOTS */
+.menu-text {
+  font-size: 14px;
+  color: #6b6b6b;
+  cursor: pointer;
+  user-select: none;
 }
 
 /* mobile sidebar behavior */
@@ -156,15 +171,15 @@ body {
   color: #666;
 }
 
-/* ===== FULL WIDTH IMAGE (NO BOX) ===== */
+/* ===== FULL IMAGE ===== */
 .full-image {
   width: 100%;
   max-width: 1200px;
   height: auto;
   display: block;
   margin: 30px auto 0 auto;
-  border-radius: 0;      /* removes card feel */
-  box-shadow: none;      /* removes white box effect */
+  border-radius: 0;
+  box-shadow: none;
 }
 </style>
 </head>
@@ -186,8 +201,11 @@ body {
     <!-- SIDEBAR -->
     <aside class="card sidebar" id="sidebar">
 
-      <!-- 3 DOT BUTTON (MOBILE ONLY) -->
-      <div class="menu-btn" onclick="toggleMenu()">⋯</div>
+      <!-- MENU (3 DOTS + TEXT) -->
+      <div class="menu-row">
+        <div class="menu-btn" onclick="toggleMenu()">⋯</div>
+        <div class="menu-text" onclick="toggleMenu()">Click for links</div>
+      </div>
 
       <div class="sidebar-links">
         <a class="nav-link" href="#">Submit an Event</a>
@@ -243,7 +261,7 @@ body {
 
 </div>
 
-<!-- FULL WIDTH IMAGE (NO WHITE BOX) -->
+<!-- FULL WIDTH IMAGE -->
 <img
   src="images/Screenshot_20260420_1330221_Instagram.jpg"
   alt="GBYAC Highlight"
@@ -251,19 +269,16 @@ body {
 />
 
 <script>
-// ===== MOBILE MENU =====
 function toggleMenu() {
   document.getElementById("sidebar").classList.toggle("open");
 }
 
-// ===== EVENTS =====
 const events = {
   "2026-04-14": [
     "Young Adult Mass<br>6:30 PM – St. Mary’s Church"
   ]
 };
 
-// ===== CALENDAR =====
 let currentDate = new Date();
 
 const months = [
