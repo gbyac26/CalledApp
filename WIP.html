@@ -182,6 +182,26 @@ html, body {
   color: #666;
 }
 
+
+/* =========================
+   IMAGE FIX (IMPORTANT)
+========================= */
+.full-image {
+  width: 100%;
+  max-width: 1200px;
+  max-height: 55vh;
+  object-fit: contain;
+  display: block;
+  margin: 30px auto 0 auto;
+}
+
+@media (max-width: 900px) {
+  .full-image {
+    max-height: 40vh;
+  }
+}
+
+   
 /* =========================
    FOOTER
 ========================= */
