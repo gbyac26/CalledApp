@@ -16,7 +16,8 @@
 ##### Pegasus.html = Meme.
 ##### Called.html = Origional link.
 ##### books.html = Links to books!
-##### define.html = Definition/image test
+##### define.html = Definition/image test.
+##### WIP.html = WIP Landing page.
 
 ## ToDo List Possibilities.
 ### Called link Page
