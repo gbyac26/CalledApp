@@ -37,10 +37,22 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
+/* ===== HERO (NOW INCLUDES ABOUT) ===== */
 .hero {
   text-align: center;
+  padding: 30px 20px;
 }
 
+.hero h1 {
+  margin-bottom: 10px;
+}
+
+.hero p {
+  margin: 6px 0;
+  color: #444;
+}
+
+/* SIDEBAR */
 .nav-link {
   display: block;
   padding: 12px;
@@ -49,7 +61,7 @@ body {
   background: #f2f2f7;
 }
 
-/* ===== CALENDAR ===== */
+/* CALENDAR */
 .calendar-header {
   display: flex;
   justify-content: space-between;
@@ -110,7 +122,7 @@ body {
   background: transparent;
 }
 
-/* ===== INSTAGRAM ===== */
+/* INSTAGRAM */
 .instagram-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -125,27 +137,20 @@ body {
   color: #666;
 }
 
-/* ===== BOTTOM IMAGE (NEW) ===== */
+/* ===== FEATURE IMAGE (UPDATED) ===== */
 .feature-wrapper {
   padding: 0;
   overflow: hidden;
+  text-align: center;
 }
 
 .feature-image {
   width: 100%;
-  max-width: 100%;
-  height: auto;
-  max-height: 160px;   /* ≈ 1/6 visual feel on desktop */
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
-}
-
-/* Slightly bigger on small screens */
-@media (max-width: 900px) {
-  .feature-image {
-    max-height: 220px;
-  }
+  max-width: 900px;   /* controls overall size */
+  height: auto;       /* keeps aspect ratio */
+  display: inline-block;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 </style>
 </head>
@@ -154,10 +159,13 @@ body {
 
 <div class="container">
 
-  <!-- HERO -->
+  <!-- HERO (ABOUT MERGED HERE) -->
   <div class="card hero">
     <h1>Green Bay Young Adult Catholic</h1>
-    <p>Connecting Catholics ages 18–30(ish)</p>
+
+    <p><strong>Sharing events for Catholics ages 18–30(ish)</strong></p>
+    <p>Not affiliated with any parish or diocese</p>
+    <p>Submit an event or join our group!</p>
   </div>
 
   <div class="layout">
@@ -179,18 +187,6 @@ body {
 
     <!-- MAIN -->
     <main>
-
-      <!-- ABOUT -->
-      <div class="card">
-        <h2>About GBYAC</h2>
-        <p>
-          Sharing events for Catholics ages <strong>18–30(ish)</strong>.
-          <br><br>
-          Not affiliated with any parish or diocese.
-          <br><br>
-          Submit an event or join our group!
-        </p>
-      </div>
 
       <!-- CALENDAR -->
       <div class="card">
@@ -233,7 +229,7 @@ body {
     </main>
   </div>
 
-  <!-- BOTTOM IMAGE (MOVED HERE) -->
+  <!-- IMAGE (BOTTOM, CLEAN SIZE + ORIGINAL RATIO) -->
   <div class="card feature-wrapper">
     <img
       src="images/Screenshot_20260420_1330221_Instagram.jpg"
