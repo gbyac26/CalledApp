@@ -333,7 +333,16 @@ html, body {
 
 </div>
 
-<script async src="//www.instagram.com/embed.js"></script>
+<script async src="https://www.instagram.com/embed.js"></script>
+
+<script>
+  window.addEventListener("load", function () {
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+  });
+</script>
+         
       </div>
 
     </main>
