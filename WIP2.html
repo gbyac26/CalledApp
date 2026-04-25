@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -174,18 +173,8 @@ html, body {
   gap: 16px;
 }
 
-.instagram-embed {
-  background: #f2f2f7;
-  border-radius: 14px;
-  padding: 20px;
-  min-height: 220px;
-  text-align: center;
-  color: #666;
-}
-
-
 /* =========================
-   IMAGE FIX (IMPORTANT)
+   IMAGE FIX
 ========================= */
 .full-image {
   width: 100%;
@@ -202,7 +191,6 @@ html, body {
   }
 }
 
-   
 /* =========================
    FOOTER
 ========================= */
@@ -263,7 +251,7 @@ html, body {
 
 <div class="container">
 
-  <!-- TITLE BLOCK -->
+  <!-- TITLE -->
   <div class="card hero">
     <h1>Green Bay Young Adult Catholic</h1>
     <p>Sharing events for Catholics 18–30(ish)</p>
@@ -314,37 +302,35 @@ html, body {
       <div class="card">
         <h2>From Instagram</h2>
 
-<div class="instagram-grid">
+        <div class="instagram-grid">
 
-  <blockquote class="instagram-media"
-    data-instgrm-permalink="https://www.instagram.com/p/DTirPFWEZcL/"
-    data-instgrm-version="14">
-  </blockquote>
+          <blockquote class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/p/DTirPFWEZcL/"
+            data-instgrm-version="14"></blockquote>
 
-  <blockquote class="instagram-media"
-    data-instgrm-permalink="https://www.instagram.com/p/DJ-mvVqx13X/"
-    data-instgrm-version="14">
-  </blockquote>
+          <blockquote class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/p/DJ-mvVqx13X/"
+            data-instgrm-version="14"></blockquote>
 
-  <blockquote class="instagram-media"
-    data-instgrm-permalink="https://www.instagram.com/p/DXewaGAEXFI/"
-    data-instgrm-version="14">
-  </blockquote>
+          <blockquote class="instagram-media"
+            data-instgrm-permalink="https://www.instagram.com/p/DXewaGAEXFI/"
+            data-instgrm-version="14"></blockquote>
 
-</div>
+        </div>
 
-<script>
-  window.addEventListener("load", function () {
-    setTimeout(() => {
-      if (window.instgrm) {
-        window.instgrm.Embeds.process();
-      }
-    }, 500);
-  });
-</script>
+        <!-- ✅ FIXED INSTAGRAM LOADING -->
+        <script async src="https://www.instagram.com/embed.js"></script>
 
-<script async src="https://www.instagram.com/embed.js"></script>
-         
+        <script>
+          window.addEventListener("load", function () {
+            setTimeout(function () {
+              if (window.instgrm) {
+                window.instgrm.Embeds.process();
+              }
+            }, 600);
+          });
+        </script>
+
       </div>
 
     </main>
@@ -361,47 +347,12 @@ html, body {
 
 <script>
 
-/* =========================
-   MENU
-========================= */
+/* MENU */
 function toggleMenu() {
   document.getElementById("sidebar").classList.toggle("open");
 }
 
-/* =========================
-   EVENTS
-========================= */
-const multiDateEvents = [
-  {
-    name: "Theology on Tap<br>6:30 PM – Green Bay Distillery",
-    dates: ["2026-04-14","2026-04-21","2026-04-28"]
-  },
-  {
-    name: "Corpus Christi<br>6:30 PM – OLOL",
-    dates: ["2026-04-05","2026-04-23","2026-04-25"]
-  }
-];
-
-const recurringEvents = [
-  {
-    name: "Bible Study<br>7:00 PM – St. Peter & Paul",
-    dayOfWeek: 4,
-    startDate: "2026-04-01",
-    occurrences: null,
-    excludeDates: []
-  },
-  {
-    name: "Sunday Fellowship<br>After Mass",
-    dayOfWeek: 0,
-    startDate: "2026-04-01",
-    occurrences: 6,
-    excludeDates: []
-  }
-];
-
-/* =========================
-   CALENDAR
-========================= */
+/* CALENDAR */
 let currentDate = new Date();
 
 const months = [
@@ -429,66 +380,13 @@ function renderCalendar() {
 
   for (let d = 1; d <= daysInMonth; d++) {
 
-    const dateStr =
-      year + "-" +
-      String(month + 1).padStart(2,'0') + "-" +
-      String(d).padStart(2,'0');
-
-    const dateObj = new Date(dateStr);
-    const weekday = dateObj.getDay();
-
     const day = document.createElement("div");
     day.className = "day";
-
-    let html = `<span>${d}</span>`;
-
-    /* MULTI-DATE */
-    multiDateEvents.forEach(ev => {
-      if (ev.dates.includes(dateStr)) {
-        html += `<div class="event">${ev.name}</div>`;
-      }
-    });
-
-    /* RECURRING (FULL RESTORED LOGIC) */
-    recurringEvents.forEach(ev => {
-
-      const start = new Date(ev.startDate);
-      const afterStart = dateObj >= start;
-      const isMatch = weekday === ev.dayOfWeek;
-      const excluded = ev.excludeDates.includes(dateStr);
-
-      if (!afterStart || !isMatch || excluded) return;
-
-      // COUNT OCCURRENCES
-      let count = 0;
-      let temp = new Date(ev.startDate);
-
-      while (temp <= dateObj) {
-
-        const tempStr = temp.toISOString().split("T")[0];
-
-        if (
-          temp.getDay() === ev.dayOfWeek &&
-          !ev.excludeDates.includes(tempStr) &&
-          temp >= start
-        ) {
-          count++;
-        }
-
-        temp.setDate(temp.getDate() + 1);
-      }
-
-      if (ev.occurrences === null || count <= ev.occurrences) {
-        html += `<div class="event">${ev.name}</div>`;
-      }
-    });
-
-    day.innerHTML = html;
+    day.innerHTML = `<span>${d}</span>`;
     calendar.appendChild(day);
   }
 }
 
-/* NAV */
 function changeMonth(dir) {
   currentDate.setMonth(currentDate.getMonth() + dir);
   renderCalendar();
