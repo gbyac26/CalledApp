@@ -9546,7 +9546,7 @@ let timeout;
 // run search with small delay (fixes freezing)
 input.addEventListener("input", () => {
   clearTimeout(timeout);
-  timeout = setTimeout(filterBooks, 250);
+  timeout = setTimeout(filterBooks, 350);
 });
 
 function filterBooks() {
