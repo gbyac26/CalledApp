@@ -165,12 +165,37 @@ html, body {
 }
 
 /* =========================
-   INSTAGRAM
+   INSTAGRAM (RELIABLE FEED)
 ========================= */
-.instagram-grid {
+.ig-feed {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
+}
+
+.ig-card {
+  display: block;
+  background: #f2f2f7;
+  border-radius: 14px;
+  padding: 16px;
+  text-decoration: none;
+  color: #1c1c1e;
+  transition: 0.15s ease;
+}
+
+.ig-card:hover {
+  transform: translateY(-2px);
+  background: #e9e9ef;
+}
+
+.ig-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.ig-sub {
+  font-size: 12px;
+  color: #6b6b6b;
 }
 
 /* =========================
@@ -208,7 +233,7 @@ html, body {
 
 <div class="container">
 
-  <!-- TITLE BLOCK -->
+  <!-- TITLE -->
   <div class="card hero">
     <h1>Green Bay Young Adult Catholic</h1>
     <p>Sharing events for Catholics 18–30(ish)</p>
@@ -255,39 +280,28 @@ html, body {
 
       </div>
 
-      <!-- INSTAGRAM -->
+      <!-- INSTAGRAM (100% RELIABLE VERSION) -->
       <div class="card">
         <h2>From Instagram</h2>
 
-<div class="instagram-grid">
+        <div class="ig-feed">
 
-  <blockquote class="instagram-media"
-    data-instgrm-permalink="https://www.instagram.com/p/DTirPFWEZcL/"
-    data-instgrm-version="14"></blockquote>
+          <a class="ig-card" href="https://www.instagram.com/p/DTirPFWEZcL/" target="_blank">
+            <div class="ig-title">Instagram Post</div>
+            <div class="ig-sub">Tap to open</div>
+          </a>
 
-  <blockquote class="instagram-media"
-    data-instgrm-permalink="https://www.instagram.com/p/DJ-mvVqx13X/"
-    data-instgrm-version="14"></blockquote>
+          <a class="ig-card" href="https://www.instagram.com/p/DJ-mvVqx13X/" target="_blank">
+            <div class="ig-title">Instagram Post</div>
+            <div class="ig-sub">Tap to open</div>
+          </a>
 
-  <blockquote class="instagram-media"
-    data-instgrm-permalink="https://www.instagram.com/p/DXewaGAEXFI/"
-    data-instgrm-version="14"></blockquote>
+          <a class="ig-card" href="https://www.instagram.com/p/DXewaGAEXFI/" target="_blank">
+            <div class="ig-title">Instagram Post</div>
+            <div class="ig-sub">Tap to open</div>
+          </a>
 
-</div>
-
-<!-- ✅ ONLY FIX (INSTAGRAM WORKING VERSION) -->
-<script async src="https://www.instagram.com/embed.js"></script>
-
-<script>
-  window.addEventListener("load", function () {
-    setTimeout(function () {
-      if (window.instgrm) {
-        window.instgrm.Embeds.process();
-      }
-    }, 800);
-  });
-</script>
-
+        </div>
       </div>
 
     </main>
