@@ -29,6 +29,7 @@
 ##### - ~~Create personal or GBYAC Github.~~ DONE
 ##### - ~~Instagram feed?~~ DONE
 ##### - ~~Books!~~ DONE
+##### - ~~Search freeze.~~ DONE
 
 ## Landing Page Ideas
 ##### - ~~Calander of events / how to scrape called for events.~~ DONE
