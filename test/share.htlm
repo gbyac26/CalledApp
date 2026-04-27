@@ -1,1 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>GB Young Adult Catholic — Called</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #ffe888;
+    margin: 0;
+    padding: 20px;
+    color: #1c1c1e;
+    line-height: 1.5;
+  }
+
+  .card {
+    max-width: 520px;
+    margin: 0 auto 24px auto;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 20px;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+    display: block;
+  }
+
+  .button:hover {
+    opacity: 0.9;
+  }
+
+  .button:active {
+    transform: scale(0.98);
+  }
+
+  /* Called Purple */
+  .called {
+    background: linear-gradient(135deg, #7b2ff7, #9b4dff);
+  }
+
+  /* Instagram Gradient */
+  .instagram {
+    background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+  }
+
+  /* Light buttons */
+  .light {
+    background: #f2f2f7;
+    color: #000;
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 13px;
+    color: #8e8e93;
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px solid #f2f2f7;
+  }
+
+  /* Bottom image styling */
+  .bottom-image {
+    display: block;
+    width: 90%;
+    max-width: 900px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 16px;
+    }
+    
+    .card {
+      margin-bottom: 16px;
+      padding: 20px;
+    }
+    
+    .bottom-image {
+      width: 95%;
+    }
+  }
+
+  /* Fix for iOS Safari */
+  @supports (-webkit-touch-callout: none) {
+    .button {
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <h1>You're invited to join</h1>
+  <h2>GB Young Adult Catholic on Called</h2>
+
+  <!-- Called -->
+  <a class="button called" href="https://web.called.app/ZiXXYp" target="_blank" rel="noopener noreferrer">
+    <img class="icon" src="ADD HERE">
+    Join Now on Called
+  </a>
+
+  <!-- Instagram -->
+  <a class="button instagram" href="https://instagram.com/green_bay_young_adult_catholic" target="_blank" rel="noopener noreferrer">
+    <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/instagram.svg">
+    Follow on Instagram
+  </a>
+
+  <!-- Google Play -->
+  <a class="button light" href="https://play.google.com/store/apps/details?id=app.called.app" target="_blank" rel="noopener noreferrer">
+    <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/googleplay.svg">
+    Download Called For Android
+  </a>
+
+  <!-- Apple App Store -->
+  <a class="button light" href="https://apps.apple.com/us/app/called-chat-engage-connect/id6445821834" target="_blank" rel="noopener noreferrer">
+    <img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/appstore.svg">
+    Download Called For iPhone
+  </a>
+
+  <div class="footer">
+    Powered by Jesus Christ
+  </div>
+
+</div>
+
+<!-- Bottom image -->
+<img class="bottom-image" src="images/Screenshot_20260420_132948_Instagram.jpg" alt="Instagram Screenshot">
+
+</body>
+</html>
