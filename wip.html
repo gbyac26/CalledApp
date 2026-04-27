@@ -91,19 +91,16 @@ html, body {
 }
 
 /* =========================
-   HERO
+   HERO - PLAIN COLOR
 ========================= */
 .hero {
   text-align: center;
 }
 
 .hero h1 {
-  background: linear-gradient(135deg, #7b2ff7, #ff6b6b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   margin: 0 0 8px 0;
   font-size: 2.2em;
+  color: #1c1c1e;
 }
 
 /* =========================
@@ -364,7 +361,7 @@ html, body {
 }
 
 /* =========================
-   FOOTER
+   SIMPLIFIED FOOTER
 ========================= */
 .footer {
   text-align: center;
@@ -447,10 +444,10 @@ html, body {
 
       <nav class="sidebar-links" aria-labelledby="nav-heading">
         <h3 id="nav-heading" class="sr-only">Navigation</h3>
-        <a class="nav-link" href="https://gbyac.com/submit" target="_blank" rel="noopener">📝 Submit an Event</a>
-        <a class="nav-link" href="https://gbyac.com/Called.html" target="_blank" rel="noopener">👥 Join Our Group</a>
-        <a class="nav-link" href="https://gbyac.com/books" target="_blank" rel="noopener">📚 Catholic Library</a>
-        <a class="nav-link" href="https://gbyac.com/contact" target="_blank" rel="noopener">📧 Contact</a>
+        <a class="nav-link" href="https://gbyac.com/submit" target="_blank" rel="noopener">Submit an Event</a>
+        <a class="nav-link" href="https://gbyac.com/Called.html" target="_blank" rel="noopener">Join Our Group</a>
+        <a class="nav-link" href="https://gbyac.com/books" target="_blank" rel="noopener">Catholic Library</a>
+        <a class="nav-link" href="https://gbyac.com/contact" target="_blank" rel="noopener">Contact</a>
       </nav>
 
     </aside>
@@ -526,14 +523,13 @@ html, body {
      loading="lazy"
      onerror="this.style.display='none'; this.alt='Image unavailable'">
 
-<!-- FOOTER -->
+<!-- SIMPLIFIED FOOTER -->
 <footer class="footer">
-  <p>Powered by Jesus Christ ✝️</p>
-  <p><small>Last updated: <span id="lastUpdated"></span></small></p>
+  <p>Powered by Jesus Christ</p>
 </footer>
 
 <!-- =========================
-   ENHANCED SCRIPTS
+   SCRIPTS
 ========================= -->
 <script>
 /* MENU TOGGLE WITH ARIA */
@@ -695,9 +691,6 @@ function loadInstagram() {
 
   document.body.appendChild(ig);
 }
-
-/* UPDATE FOOTER */
-document.getElementById("lastUpdated").textContent = new Date().toLocaleDateString();
 
 /* KEYBOARD NAVIGATION */
 document.addEventListener('keydown', function(e) {
