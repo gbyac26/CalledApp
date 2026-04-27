@@ -81,6 +81,10 @@ html, body {
   color: inherit;
 }
 
+.nav-link:hover {
+  background: #e5e5ea;
+}
+
 /* =========================
    MENU
 ========================= */
@@ -110,8 +114,14 @@ html, body {
 
 @media (max-width: 900px) {
   .menu-btn { display: block; }
-  .sidebar-links { display: none; }
-  .sidebar.open .sidebar-links { display: block; }
+  .sidebar-links { 
+    display: none; 
+    margin-top: 10px;
+    transition: all 0.3s ease;
+  }
+  .sidebar.open .sidebar-links { 
+    display: block; 
+  }
 }
 
 /* =========================
@@ -173,7 +183,7 @@ html, body {
 }
 
 /* =========================
-   INSTAGRAM EMBEDS - MOBILE PERFECTED ✅
+   INSTAGRAM CARDS - PERFECTLY UNIFORM SIZE
 ========================= */
 .instagram-grid {
   display: grid;
@@ -182,18 +192,27 @@ html, body {
   align-items: start;
 }
 
-.instagram-embed {
+.instagram-card {
+  height: 350px; /* Fixed uniform height */
   position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%; /* 1:1 aspect ratio */
   overflow: hidden;
   border-radius: 12px;
   background: #f2f2f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.instagram-embed iframe,
-.instagram-embed blockquote {
+.instagram-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.instagram-card iframe,
+.instagram-card blockquote {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
@@ -208,7 +227,7 @@ html, body {
 }
 
 /* Instagram specific overrides */
-.instagram-media {
+.instagram-card .instagram-media {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
@@ -218,39 +237,48 @@ html, body {
   padding: 0 !important;
 }
 
-/* Fallback for when Instagram loads */
-.instagram-embed::before {
-  content: "📸 Loading...";
+/* Perfect loading state */
+.instagram-card::before {
+  content: "📸 Loading Instagram...";
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 14px;
   color: #6b6b6b;
-  z-index: 1;
+  z-index: 10;
+  background: rgba(255,255,255,0.9);
+  padding: 12px 20px;
+  border-radius: 8px;
 }
 
-.instagram-embed iframe,
-.instagram-embed blockquote {
-  z-index: 2;
+.instagram-card iframe,
+.instagram-card blockquote {
+  z-index: 5;
 }
 
-/* Mobile grid adjustments */
+/* Mobile adjustments */
 @media (max-width: 900px) {
   .instagram-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
   
-  .instagram-embed {
-    padding-bottom: 90%; /* Slightly taller on mobile */
+  .instagram-card {
+    height: 300px;
+    padding: 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .instagram-embed {
-    padding-bottom: 85%;
+  .instagram-card {
+    height: 280px;
     border-radius: 8px;
+  }
+  
+  .instagram-card::before {
+    font-size: 13px;
+    padding: 10px 16px;
   }
 }
 
@@ -378,19 +406,19 @@ html, body {
 
         <div class="instagram-grid">
 
-          <div class="instagram-embed">
+          <div class="instagram-card">
             <blockquote class="instagram-media"
               data-instgrm-permalink="https://www.instagram.com/p/DTirPFWEZcL/"
               data-instgrm-version="14"></blockquote>
           </div>
 
-          <div class="instagram-embed">
+          <div class="instagram-card">
             <blockquote class="instagram-media"
               data-instgrm-permalink="https://www.instagram.com/p/DJ-mvVqx13X/"
               data-instgrm-version="14"></blockquote>
           </div>
 
-          <div class="instagram-embed">
+          <div class="instagram-card">
             <blockquote class="instagram-media"
               data-instgrm-permalink="https://www.instagram.com/p/DXewaGAEXFI/"
               data-instgrm-version="14"></blockquote>
@@ -413,7 +441,7 @@ html, body {
 <script>
 
 /* =========================
-   INSTAGRAM - SUPER ROBUST LOADING
+   INSTAGRAM - BULLETPROOF LOADING
 ========================= */
 function reloadInstagramEmbeds() {
   if (window.instgrm && window.instgrm.Embeds) {
@@ -421,19 +449,19 @@ function reloadInstagramEmbeds() {
   }
 }
 
-// Load immediately and retry
+// Multiple loading attempts
 setTimeout(reloadInstagramEmbeds, 500);
 setTimeout(reloadInstagramEmbeds, 1500);
 setTimeout(reloadInstagramEmbeds, 3000);
 
-// Resize handler for dynamic loading
+// Resize handler
 let resizeTimer;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(reloadInstagramEmbeds, 250);
 });
 
-// Intersection Observer for lazy loading
+// Intersection Observer
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -444,7 +472,7 @@ if ('IntersectionObserver' in window) {
     });
   });
   
-  document.querySelectorAll('.instagram-embed').forEach(el => {
+  document.querySelectorAll('.instagram-card').forEach(el => {
     observer.observe(el);
   });
 }
@@ -490,9 +518,8 @@ const recurringEvents = [
   }
 ];
 
-/* CALENDAR (SAFE) */
+/* CALENDAR */
 let currentDate = new Date();
-
 const months = [
   "January","February","March","April","May","June",
   "July","August","September","October","November","December"
@@ -502,8 +529,7 @@ function renderCalendar() {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
 
-  document.getElementById("monthTitle").innerText =
-    months[month] + " " + year;
+  document.getElementById("monthTitle").innerText = months[month] + " " + year;
 
   const calendar = document.getElementById("calendar");
   calendar.innerHTML = "";
@@ -516,14 +542,8 @@ function renderCalendar() {
   }
 
   for (let d = 1; d <= daysInMonth; d++) {
-
     const dateObj = new Date(year, month, d);
-
-    const dateStr =
-      year + "-" +
-      String(month + 1).padStart(2,'0') + "-" +
-      String(d).padStart(2,'0');
-
+    const dateStr = year + "-" + String(month + 1).padStart(2,'0') + "-" + String(d).padStart(2,'0');
     const weekday = dateObj.getDay();
 
     const day = document.createElement("div");
@@ -538,7 +558,6 @@ function renderCalendar() {
     });
 
     recurringEvents.forEach(ev => {
-
       const start = new Date(ev.startDate);
       const afterStart = dateObj >= start;
       const isMatch = weekday === ev.dayOfWeek;
@@ -550,17 +569,10 @@ function renderCalendar() {
       let temp = new Date(ev.startDate);
 
       while (temp <= dateObj) {
-
         const tempStr = temp.toISOString().split("T")[0];
-
-        if (
-          temp.getDay() === ev.dayOfWeek &&
-          !ev.excludeDates.includes(tempStr) &&
-          temp >= start
-        ) {
+        if (temp.getDay() === ev.dayOfWeek && !ev.excludeDates.includes(tempStr) && temp >= start) {
           count++;
         }
-
         temp.setDate(temp.getDate() + 1);
       }
 
