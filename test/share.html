@@ -97,16 +97,18 @@
     border-top: 1px solid #f2f2f7;
   }
 
-  /* Bottom image styling */
-  .bottom-image {
-    display: block;
-    width: 90%;
-    max-width: 900px;
-    height: auto;
-    margin: 0 auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  }
+/* ✅ Bottom image styling - BLENDS INTO BACKGROUND */
+.bottom-image {
+  display: block;
+  width: 90%;
+  max-width: 900px;
+  height: auto;
+  margin: 24px auto 0;  /* Only top margin */
+  border-radius: 0;     /* Remove rounded corners */
+  box-shadow: none;     /* Remove ALL shadows */
+  border: none;         /* Remove any borders */
+  background: transparent; /* Match background */
+}
 
   @media (max-width: 600px) {
     body {
