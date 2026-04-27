@@ -165,11 +165,11 @@ html, body {
 }
 
 /* =========================
-   INSTAGRAM
+   INSTAGRAM (FIXED)
 ========================= */
 .instagram-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
@@ -181,17 +181,20 @@ html, body {
 
 .instagram-embed {
   width: 100%;
+  aspect-ratio: 4 / 5;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background: #f2f2f7;
+  border-radius: 12px;
 }
 
 .instagram-media {
   width: 100% !important;
-  max-width: 100% !important;
+  height: 100% !important;
   min-width: 0 !important;
-  margin: 0 auto !important;
+  margin: 0 !important;
 }
 
 /* =========================
@@ -273,7 +276,6 @@ html, body {
 
 <div class="container">
 
-  <!-- TITLE -->
   <div class="card hero">
     <h1>Green Bay Young Adult Catholic</h1>
     <p>Sharing events for Catholics 18–30(ish)</p>
@@ -282,9 +284,7 @@ html, body {
 
   <div class="layout">
 
-    <!-- SIDEBAR -->
     <aside class="card sidebar" id="sidebar">
-
       <div class="menu-row">
         <div class="menu-btn" onclick="toggleMenu()">⋯</div>
         <div class="menu-text" onclick="toggleMenu()">Click for links</div>
@@ -296,15 +296,12 @@ html, body {
         <a class="nav-link" href="https://gbyac.com/books">Catholic Library</a>
         <a class="nav-link" href="#">Contact</a>
       </div>
-
     </aside>
 
-    <!-- MAIN -->
     <main>
 
-      <!-- CALENDAR -->
+      <!-- CALENDAR (UNCHANGED) -->
       <div class="card">
-
         <div class="calendar-header">
           <div class="arrow" onclick="changeMonth(-1)">←</div>
           <h2 id="monthTitle"></h2>
@@ -317,7 +314,6 @@ html, body {
         </div>
 
         <div id="calendar" class="calendar-grid"></div>
-
       </div>
 
       <!-- INSTAGRAM -->
@@ -329,43 +325,39 @@ html, body {
           <div class="instagram-embed">
             <blockquote class="instagram-media"
               data-instgrm-permalink="https://www.instagram.com/p/DTirPFWEZcL/"
-              data-instgrm-version="14"></blockquote>
+              data-instgrm-version="14"
+              data-instgrm-captioned></blockquote>
           </div>
 
           <div class="instagram-embed">
             <blockquote class="instagram-media"
               data-instgrm-permalink="https://www.instagram.com/p/DJ-mvVqx13X/"
-              data-instgrm-version="14"></blockquote>
+              data-instgrm-version="14"
+              data-instgrm-captioned></blockquote>
           </div>
-           
+
           <div class="instagram-embed">
             <blockquote class="instagram-media"
-              data-instgrm-permalink="https://www.instagram.com/p/DJ-mvVqx13X/"
-              data-instgrm-version="14"></blockquote>
+              data-instgrm-permalink="https://www.instagram.com/p/C6Example123/"
+              data-instgrm-version="14"
+              data-instgrm-captioned></blockquote>
           </div>
 
         </div>
-
       </div>
 
     </main>
   </div>
 </div>
 
-<!-- IMAGE -->
 <img src="images/Screenshot_20260420_1330221_Instagram.jpg" class="full-image">
 
-<!-- FOOTER -->
 <div class="footer">
   Powered by Jesus Christ
 </div>
 
-<!-- =========================
-   INSTAGRAM FIX (SAFE LOAD)
-========================= -->
 <script>
 window.addEventListener("load", function () {
-
   const ig = document.createElement("script");
   ig.src = "https://www.instagram.com/embed.js";
 
@@ -378,7 +370,6 @@ window.addEventListener("load", function () {
   };
 
   document.body.appendChild(ig);
-
 });
 
 /* MENU */
@@ -386,7 +377,7 @@ function toggleMenu() {
   document.getElementById("sidebar").classList.toggle("open");
 }
 
-/* EVENTS (UNCHANGED) */
+/* ===== YOUR EVENTS + CALENDAR CODE (UNCHANGED) ===== */
 const multiDateEvents = [
   {
     name: "Theology on Tap<br>6:30 PM – Green Bay Distillery",
@@ -422,7 +413,6 @@ const recurringEvents = [
   }
 ];
 
-/* CALENDAR (UNCHANGED) */
 let currentDate = new Date();
 
 const months = [
