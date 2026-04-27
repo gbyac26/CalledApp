@@ -165,7 +165,7 @@ html, body {
 }
 
 /* =========================
-   INSTAGRAM (FIXED)
+   INSTAGRAM (IMPROVED - NO WHITE BOXES)
 ========================= */
 .instagram-grid {
   display: grid;
@@ -182,12 +182,23 @@ html, body {
 .instagram-embed {
   width: 100%;
   aspect-ratio: 4 / 5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background: #f2f2f7;
   border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #f2f2f7 0%, #e5e5ea 50%, #f2f2f7 100%);
+  /* Loading shimmer animation */
+  background-size: 200% 200%;
+  animation: shimmer 2s infinite;
+}
+
+.instagram-embed.loaded {
+  background: #f2f2f7;
+  animation: none;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0%; }
+  100% { background-position: -200% 0%; }
 }
 
 .instagram-media {
@@ -195,6 +206,39 @@ html, body {
   height: 100% !important;
   min-width: 0 !important;
   margin: 0 !important;
+  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Hide Instagram's default loading states */
+.instagram-media iframe {
+  border-radius: 12px !important;
+}
+
+.instagram-embed::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e5ea;
+  border-top: 3px solid #7b2ff7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 1;
+}
+
+.instagram-embed.loaded::before {
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* =========================
@@ -355,19 +399,31 @@ html, body {
 </div>
 
 <script>
+/* ===== IMPROVED INSTAGRAM LOADING - NO WHITE BOXES ===== */
 window.addEventListener("load", function () {
-  const ig = document.createElement("script");
-  ig.src = "https://www.instagram.com/embed.js";
-
-  ig.onload = function () {
+  // Pre-load Instagram script
+  const igScript = document.createElement("script");
+  igScript.src = "https://www.instagram.com/embed.js";
+  igScript.async = true;
+  igScript.defer = true;
+  
+  igScript.onload = function () {
+    // Small delay to ensure script is ready
     setTimeout(function () {
       if (window.instgrm && window.instgrm.Embeds) {
         window.instgrm.Embeds.process();
+        
+        // Mark embeds as loaded after processing
+        setTimeout(() => {
+          document.querySelectorAll('.instagram-embed').forEach(embed => {
+            embed.classList.add('loaded');
+          });
+        }, 500);
       }
-    }, 300);
+    }, 100);
   };
-
-  document.body.appendChild(ig);
+  
+  document.head.appendChild(igScript); // Load in head for better performance
 });
 
 /* MENU */
