@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Green Bay Young Adult Catholic</title>
 
 <style>
@@ -21,6 +21,7 @@ html, body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   background: #ffe888;
   color: #1c1c1e;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* =========================
@@ -76,6 +77,8 @@ html, body {
   margin-bottom: 10px;
   border-radius: 10px;
   background: #f2f2f7;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* =========================
@@ -95,6 +98,8 @@ html, body {
   padding: 10px 14px;
   background: #f2f2f7;
   border-radius: 10px;
+  border: none;
+  font-family: inherit;
 }
 
 .menu-text {
@@ -124,6 +129,8 @@ html, body {
   padding: 6px 12px;
   border-radius: 8px;
   background: #f2f2f7;
+  border: none;
+  font-family: inherit;
 }
 
 .weekdays {
@@ -162,36 +169,89 @@ html, body {
   border-radius: 8px;
   font-size: 12px;
   margin-top: 6px;
+  line-height: 1.2;
 }
 
 /* =========================
-   INSTAGRAM (FIXED)
+   INSTAGRAM EMBEDS - MOBILE PERFECTED ✅
 ========================= */
 .instagram-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 16px;
-}
-
-@media (max-width: 900px) {
-  .instagram-grid {
-    grid-template-columns: 1fr;
-  }
+  align-items: start;
 }
 
 .instagram-embed {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
+  position: relative;
   width: 100%;
+  height: 0;
+  padding-bottom: 100%; /* 1:1 aspect ratio */
   overflow: hidden;
+  border-radius: 12px;
+  background: #f2f2f7;
 }
 
-.instagram-media {
+.instagram-embed iframe,
+.instagram-embed blockquote {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
   width: 100% !important;
-  max-width: 540px !important;
+  height: 100% !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  max-width: none !important;
   min-width: 0 !important;
-  margin: 0 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Instagram specific overrides */
+.instagram-media {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Fallback for when Instagram loads */
+.instagram-embed::before {
+  content: "📸 Loading...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: #6b6b6b;
+  z-index: 1;
+}
+
+.instagram-embed iframe,
+.instagram-embed blockquote {
+  z-index: 2;
+}
+
+/* Mobile grid adjustments */
+@media (max-width: 900px) {
+  .instagram-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .instagram-embed {
+    padding-bottom: 90%; /* Slightly taller on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .instagram-embed {
+    padding-bottom: 85%;
+    border-radius: 8px;
+  }
 }
 
 /* =========================
@@ -281,7 +341,7 @@ html, body {
     <aside class="card sidebar" id="sidebar">
 
       <div class="menu-row">
-        <div class="menu-btn" onclick="toggleMenu()">⋯</div>
+        <button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">⋯</button>
         <div class="menu-text" onclick="toggleMenu()">Click for links</div>
       </div>
 
@@ -299,9 +359,9 @@ html, body {
       <div class="card">
 
         <div class="calendar-header">
-          <div class="arrow" onclick="changeMonth(-1)">←</div>
+          <button class="arrow" onclick="changeMonth(-1)" aria-label="Previous month">←</button>
           <h2 id="monthTitle"></h2>
-          <div class="arrow" onclick="changeMonth(1)">→</div>
+          <button class="arrow" onclick="changeMonth(1)" aria-label="Next month">→</button>
         </div>
 
         <div class="weekdays">
@@ -348,39 +408,46 @@ html, body {
   Powered by Jesus Christ
 </div>
 
+<script async defer src="https://www.instagram.com/embed.js"></script>
+
 <script>
 
 /* =========================
-   INSTAGRAM FIX (ROBUST)
+   INSTAGRAM - SUPER ROBUST LOADING
 ========================= */
-function loadInstagram() {
-
-  function run() {
-    if (window.instgrm && window.instgrm.Embeds) {
-      window.instgrm.Embeds.process();
-    }
+function reloadInstagramEmbeds() {
+  if (window.instgrm && window.instgrm.Embeds) {
+    window.instgrm.Embeds.process();
   }
-
-  if (window.instgrm) {
-    run();
-    return;
-  }
-
-  const script = document.createElement("script");
-  script.src = "https://www.instagram.com/embed.js";
-  script.async = true;
-
-  script.onload = () => {
-    setTimeout(run, 400);
-    setTimeout(run, 1200);
-  };
-
-  document.body.appendChild(script);
 }
 
-window.addEventListener("load", () => {
-  setTimeout(loadInstagram, 300);
+// Load immediately and retry
+setTimeout(reloadInstagramEmbeds, 500);
+setTimeout(reloadInstagramEmbeds, 1500);
+setTimeout(reloadInstagramEmbeds, 3000);
+
+// Resize handler for dynamic loading
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(reloadInstagramEmbeds, 250);
 });
+
+// Intersection Observer for lazy loading
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        reloadInstagramEmbeds();
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+  
+  document.querySelectorAll('.instagram-embed').forEach(el => {
+    observer.observe(el);
+  });
+}
 
 /* MENU */
 function toggleMenu() {
