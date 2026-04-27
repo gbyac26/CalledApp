@@ -169,15 +169,32 @@ html, body {
 ========================= */
 .instagram-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+}
+
+/* MOBILE FIX */
+@media (max-width: 900px) {
+  .instagram-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .instagram-embed {
   border-radius: 14px;
   overflow: hidden;
-  padding: 0;
-  background: transparent;
+  background: #fff;
+
+  /* critical for mobile */
+  display: block;
+  width: 100%;
+}
+
+/* Instagram iframe fix */
+.instagram-embed iframe {
+  width: 100% !important;
+  min-height: 420px !important;
+  border: none !important;
 }
 
 
@@ -497,9 +514,15 @@ if (window.instgrm) {
   window.instgrm.Embeds.process();
 }
 
-</script>
-
 <script async src="https://www.instagram.com/embed.js"></script>
+
+<script>
+  window.addEventListener("load", function () {
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+  });
+</script>
    
 </body>
 </html>
