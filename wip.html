@@ -165,7 +165,7 @@ html, body {
 }
 
 /* =========================
-   INSTAGRAM
+   INSTAGRAM (FIXED)
 ========================= */
 .instagram-grid {
   display: grid;
@@ -180,16 +180,16 @@ html, body {
 }
 
 .instagram-embed {
-  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  width: 100%;
   overflow: hidden;
 }
 
 .instagram-media {
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: 540px !important;
   min-width: 0 !important;
   margin: 0 auto !important;
 }
@@ -226,7 +226,6 @@ html, body {
    MOBILE FIXES
 ========================= */
 @media (max-width: 900px) {
-
   .day {
     min-height: 80px;
     font-size: 11px;
@@ -248,7 +247,6 @@ html, body {
 }
 
 @media (max-width: 600px) {
-
   .day {
     min-height: 65px;
     font-size: 10px;
@@ -263,7 +261,6 @@ html, body {
   .weekdays {
     font-size: 10px;
   }
-
 }
 
 </style>
@@ -356,11 +353,18 @@ html, body {
 <script>
 
 /* =========================
-   INSTAGRAM FIX (PATCHED)
+   INSTAGRAM FIX (ROBUST)
 ========================= */
 function loadInstagram() {
-  if (window.instgrm && window.instgrm.Embeds) {
-    window.instgrm.Embeds.process();
+
+  function run() {
+    if (window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+  }
+
+  if (window.instgrm) {
+    run();
     return;
   }
 
@@ -369,17 +373,16 @@ function loadInstagram() {
   script.async = true;
 
   script.onload = () => {
-    setTimeout(() => {
-      if (window.instgrm && window.instgrm.Embeds) {
-        window.instgrm.Embeds.process();
-      }
-    }, 500);
+    setTimeout(run, 400);
+    setTimeout(run, 1200);
   };
 
   document.body.appendChild(script);
 }
 
-window.addEventListener("load", loadInstagram);
+window.addEventListener("load", () => {
+  setTimeout(loadInstagram, 300);
+});
 
 /* MENU */
 function toggleMenu() {
@@ -422,9 +425,7 @@ const recurringEvents = [
   }
 ];
 
-/* =========================
-   CALENDAR (PATCHED DATE BUG)
-========================= */
+/* CALENDAR (SAFE) */
 let currentDate = new Date();
 
 const months = [
@@ -451,7 +452,6 @@ function renderCalendar() {
 
   for (let d = 1; d <= daysInMonth; d++) {
 
-    /* FIXED: safe local date (no timezone shift) */
     const dateObj = new Date(year, month, d);
 
     const dateStr =
