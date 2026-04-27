@@ -165,15 +165,16 @@ html, body {
 }
 
 /* =========================
-   INSTAGRAM
+   INSTAGRAM (FIXED)
 ========================= */
+
 .instagram-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
 }
 
-/* MOBILE FIX */
+/* mobile → stack properly */
 @media (max-width: 900px) {
   .instagram-grid {
     grid-template-columns: 1fr;
@@ -181,20 +182,19 @@ html, body {
 }
 
 .instagram-embed {
-  border-radius: 14px;
-  overflow: hidden;
-  background: #fff;
-
-  /* critical for mobile */
-  display: block;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-/* Instagram iframe fix */
-.instagram-embed iframe {
+/* IMPORTANT: make Instagram responsive */
+.instagram-media {
   width: 100% !important;
-  min-height: 420px !important;
-  border: none !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
 }
 
 
