@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catholic Library</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #ffe888;
+  margin: 0;
+  padding: 20px;
+  color: #1c1c1e;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.search-wrapper {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 12px 42px 12px 14px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.search-wrapper button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+.library {
+  display: flex;
+  flex-direction: column;
+}
+
+.book {
+  display: block;
+  background: #f2f2f7;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #000;
+  transition: all 0.15s ease;
+  line-height: 1.4;
+}
+
+.book.matched {
+  background: #fff3cd;
+  border: 2px solid #ffeaa7;
+  box-shadow: 0 4px 12px rgba(255, 234, 167, 0.3);
+}
+
+.book:hover {
+  background: #e6e6eb;
+  transform: translateY(-1px);
+}
+
+.book:hover.matched {
+  background: #ffe8a3;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+mark {
+  background: #ffeb3b;
+  padding: 1px 3px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-style: italic;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 2px dashed #dee2e6;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <h1>Catholic Library</h1>
+
+  <div id="bookCount" style="margin: 4px 0 16px 0; font-weight: 600; font-size: 16px;">
+    Loading...
+  </div>
+
+  <div class="search-wrapper">
+    <input id="searchInput" placeholder="Search books...">
+    <button id="clearBtn" onclick="clearSearch()">×</button>
+  </div>
+
+  <div class="library" id="library">
+    <!-- BOOKS HERE -->
+  </div>
+</div>
+
+<script>
+const input = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearBtn");
+const library = document.getElementById("library");
+const bookCount = document.getElementById("bookCount");
+
+let allBooks = [];
+let timeout;
+
+// YOUR BOOKS HTML - ADD MORE BOOKS HERE
+const yourBooksHTML = `
+<a class="book" href="http://www.goodcatholicbooks.org/pdf/bellarmine_art-of-dying-well.pdf" target="_blank">
+  <div class="title">The Art of Dying Well (St. Robert Bellarmine) – pdf, text, kindle; also pdf here; or audiobook here</div>
+</a>
+
+<a class="book" href="https://example.com/another-book.pdf" target="_blank">
+  <div class="title">Another Great Catholic Book – pdf, epub</div>
+</a>
+
+<!-- ADD MORE BOOKS LIKE THIS -->
+`;
+
+window.onload = () => {
+  // Parse and store ALL books
+  library.innerHTML = yourBooksHTML;
+  allBooks = Array.from(library.children);
+  
+  // Pre-index
+  allBooks.forEach(book => {
+    const titleEl = book.querySelector('.title');
+    book.dataset.title = titleEl.textContent.toLowerCase();
+    book.dataset.originalTitle = titleEl.textContent;
+  });
+  
+  // Clear for search functionality
+  library.innerHTML = '';
+  bookCount.textContent = `Books: ${allBooks.length}`;
+};
+
+function filterBooks() {
+  const q = input.value.toLowerCase();
+  clearBtn.style.display = q ? "block" : "none";
+
+  // ✅ Clear library
+  library.innerHTML = '';
+  let matchCount = 0;
+
+  allBooks.forEach(book => {
+    const title = book.dataset.title;
+    
+    if (!q || title.includes(q)) {
+      // Clone to avoid modification issues
+      const clone = book.cloneNode(true);
+      const titleEl = clone.querySelector('.title');
+      
+      // Reset then highlight if searching
+      titleEl.innerHTML = book.dataset.originalTitle;
+      
+      if (q) {
+        matchCount++;
+        clone.classList.add('matched');
+        const safeQ = q.replace(/[.*+?^${}()|[\$\\$/g, "\\$&");
+        titleEl.innerHTML = book.dataset.originalTitle.replace(
+          new RegExp(`(${safeQ})`, "gi"),
+          "<mark>$1</mark>"
+        );
+      }
+      
+      library.appendChild(clone);
+    }
+  });
+
+  // No results
+  if (q && matchCount === 0) {
+    library.innerHTML = '<div class="no-results">No books found</div>';
+  }
+
+  bookCount.textContent = q ? `Matches: ${matchCount}` : `Books: ${allBooks.length}`;
+}
+
+function clearSearch() {
+  input.value = "";
+  filterBooks(); // Use filterBooks with empty query to show all
+  input.focus();
+}
+
+// Fast search
+input.addEventListener("input", () => {
+  clearTimeout(timeout);
+  timeout = setTimeout(filterBooks, 100);
+});
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") clearSearch();
+});
+</script>
+</body>
+</html>
