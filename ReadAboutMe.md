@@ -1,6 +1,7 @@
-# Everything in the "Called-App" branch are W.I.P.
+# Everything in the "Called-App" branch are LIVE.
 #### All of the links are ment to be used for NFC tags to help spread awareness.
 #### This whole branch is live for all addresses respectivly.
+
 
 # **!!!GBYAC.com IS LIVE!!!**
 ##### License is CC.
@@ -15,10 +16,10 @@
 ##### index.md = Landing page.
 ##### ReadAboutMe.md = Markdown file to explain.
 ##### Pegasus.html = Meme.
-##### Called.html = Origional link.
+##### Called.html = Origional link. ALL TAGS GO HERE.
 ##### books.html = Links to books!
 ##### define.html = Definition/image test.
-##### WIP.html = WIP Landing page.
+##### wip(#).html = WIP pages.
 
 ## ToDo List Possibilities.
 ### Called link Page
