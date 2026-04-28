@@ -9,6 +9,7 @@
 ##### pdf = PDF storage.
 ##### images = Picture storage.
 ##### Parts to Create Books Page = Files for books page creation.
+##### test = All work in progress pages.
 
 ## All FILES.
 ##### index.md = Landing page.
