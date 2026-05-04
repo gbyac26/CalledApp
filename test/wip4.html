@@ -104,6 +104,7 @@ html, body {
   padding: 24px;
   margin-bottom: 20px;
   box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+  overflow: hidden;
 }
 
 /* =========================
@@ -581,6 +582,22 @@ html, body {
   margin: 20px 0;
 }
 
+
+
+
+.auto-scroll-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 14px;
+}
+
+.auto-scroll-track {
+  align-items: center;
+}
+
+
+   
 </style>
 </head>
 
@@ -632,7 +649,7 @@ html, body {
       <!-- SCROLLER PHOTOS -->
 
 <div class="card">
-  <h2 class="scroll-title">Past Activities</h2>
+  <h2 class="scroll-title" style="margin-top:0;">Past Activities</h2>
 
   <div class="auto-scroll-wrapper">
     <div class="auto-scroll-track" id="scrollTrack"></div>
