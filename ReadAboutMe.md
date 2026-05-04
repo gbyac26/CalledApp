@@ -27,11 +27,15 @@
 #####   - ~~Can be hosted on Github for free.~~ DONE
 ##### - ~~Add calander to front page?~~ DONE
 ##### - ~~More links?~~ DONE
-##### - Pictures/Logo? kinda.
+##### - ~~Pictures/Logo? kinda.~~ DONE
 ##### - ~~Create personal or GBYAC Github.~~ DONE
 ##### - ~~Instagram feed?~~ DONE
 ##### - ~~Books!~~ DONE
 ##### - ~~Search freeze.~~ DONE
+##### - New Landing Page.
+#####   - add event photos
+#####   - add events.
+#####   - add links.
 
 ## Landing Page Ideas
 ##### - ~~Calander of events / how to scrape called for events.~~ DONE
