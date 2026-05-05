@@ -11,7 +11,26 @@
   * {
     box-sizing: border-box;
   }
-  
+
+/* ===== CARD FIXES ===== */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* ===== BOTTOM IMAGE ===== */
+.bottom-image {
+  display: block;
+  margin: 0 auto 20px auto;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+ 
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background: #ffe888;
@@ -126,8 +145,10 @@
   @media (max-width: 600px) {
     body {
       padding: 16px;
+     .bottom-image {
+  max-width: 240px;
     }
-    
+    }
     .card {
       margin-bottom: 16px;
       padding: 20px;
