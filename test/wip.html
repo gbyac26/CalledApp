@@ -709,6 +709,7 @@ main .card {
   .card {
     padding: 14px;
     border-radius: 16px;
+    margin-bottom: 12px;
   }
 
   .hero {
@@ -742,14 +743,32 @@ main .card {
     padding: 3px 4px;
   }
 
-.auto-scroll-track img {
-  height: 200px;
-  max-height: 55vh;
-}
+  /* =========================
+     FIX: Past Activities MOBILE
+     (removes bottom whitespace)
+  ========================= */
 
-.auto-scroll-wrapper {
-  padding: 16px;
-}
+  .past-activities {
+    min-height: unset;
+  }
+
+  .auto-scroll-wrapper {
+    padding: 10px;
+    height: 100%;
+  }
+
+  .auto-scroll-track {
+    height: 100%;
+    align-items: stretch;
+  }
+
+  .auto-scroll-track img {
+    height: 100%;
+    max-height: none;
+    width: auto;
+    object-fit: cover;
+    border-radius: 12px;
+  }
 }
     
   </style>
