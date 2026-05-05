@@ -944,8 +944,8 @@ main .card {
     function renderCalendar() {
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth();
-const today = new Date();
-today.setHours(0, 0, 0, 0);
+      const today = new Date();
+      const todayStr = today.toISOString().split("T")[0];
 
       document.getElementById("monthTitle").innerText = months[month] + " " + year;
 
@@ -963,10 +963,9 @@ today.setHours(0, 0, 0, 0);
 
       for (let d = 1; d <= daysInMonth; d++) {
         const dateStr = year + "-" + String(month + 1).padStart(2, '0') + "-" + String(d).padStart(2, '0');
-const [y, m, d] = dateStr.split("-").map(Number);
-const dateObj = new Date(y, m - 1, d);
+        const dateObj = new Date(dateStr);
         const weekday = dateObj.getDay();
-        const isToday = dateObj.toDateString() === today.toDateString();
+        const isToday = dateStr === todayStr;
 
         const day = document.createElement("div");
         day.className = "day" + (isToday ? " today" : "");
@@ -982,8 +981,8 @@ const dateObj = new Date(y, m - 1, d);
         });
 
         recurringEvents.forEach(ev => {
-          const start = new Date(ev.startDate);
-          const afterStart = dateObj >= start;
+          const start = ev.startDate;
+          const afterStart = dateStr >= ev.startDate;
           const isMatch = weekday === ev.dayOfWeek;
           const excluded = ev.excludeDates.includes(dateStr);
 
@@ -997,7 +996,7 @@ const ty = temp.getFullYear();
 const tm = String(temp.getMonth() + 1).padStart(2, "0");
 const td = String(temp.getDate()).padStart(2, "0");
 const tempStr = `${ty}-${tm}-${td}`;
-            if (temp.getDay() === ev.dayOfWeek && !ev.excludeDates.includes(tempStr) && temp >= start) {
+            if (temp.getDay() === ev.dayOfWeek && !ev.excludeDates.includes(tempStr) && tempStr >= start) {
               count++;
             }
             temp.setDate(temp.getDate() + 1);
