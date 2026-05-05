@@ -3,7 +3,10 @@
 #### This whole branch is live for all addresses respectivly.
 
 
-# **!!!GBYAC.com IS LIVE!!!**
+# **!!!GBYAC.com IS LIVE (COPY OF OLD CALLED.html BUT NO BACK BUTTON)!!!**
+# **!!!GBYAC.com/Called.html IS LIVE!!!**
+# **!!!GBYAC.com home page IS ALMOST LIVE!!!**
+
 ##### License is CC.
 
 ## All FOLDERS.
@@ -22,7 +25,7 @@
 ##### wip(#).html = WIP pages.
 
 ## ToDo List Possibilities.
-### Called link Page
+### ~~Called link Page~~ DONE
 ##### - ~~Domain for GBYAC.com $11.08.~~ DONE
 #####   - ~~Can be hosted on Github for free.~~ DONE
 ##### - ~~Add calander to front page?~~ DONE
@@ -33,6 +36,7 @@
 ##### - ~~Books!~~ DONE
 ##### - ~~Search freeze.~~ DONE
 ##### - New Landing Page.
+##### - Add back button to books page
 
 ## Landing Page Ideas
 ##### - ~~Calander of events / how to scrape called for events.~~ DONE
