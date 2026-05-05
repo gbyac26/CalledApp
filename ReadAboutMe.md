@@ -36,7 +36,7 @@
 
 ## Landing Page Ideas
 ##### - ~~Calander of events / how to scrape called for events.~~ DONE
-#####   - Add actual events.
+#####   - Add more events.
 ##### - ~~Instagram top 3 post embeded.~~ DONE
 #####   - Add actual Instagram links.
 ##### - ~~Possible links / link to library.~~ DONE
