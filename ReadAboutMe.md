@@ -6,9 +6,8 @@
 #### MIT
 
 ## LIVE PAGES!
-#### **!!!GBYAC.com IS LIVE (COPY OF OLD CALLED.html BUT NO BACK BUTTON)!!!**
 #### **!!!GBYAC.com/Called.html IS LIVE!!!**
-#### **!!!GBYAC.com home page IS ALMOST LIVE!!!**
+#### **!!!GBYAC.com home page IS LIVE!!!**
 #### **!!!GBYAC.com/books.html IS LIVE!!!**
 
 ## All FOLDERS.
@@ -55,7 +54,7 @@
 #### - ~~Not affiliated with any parish or diocese.~~ DONE
 #### - ~~Submit an event or join our group!~~ DONE
 #### - ~~Add event photos.~~ DOINE
-#### - Contact us goes nowhere.
+#### - ~~Contact us goes nowhere.~~ TEMP REMOVE
 
 ## Link For Suggestions.
 #### https://docs.google.com/forms/d/e/1FAIpQLSfOKSmuxzjS7oucfldS486q_jPCTnAGigDZqHCjBiE_RQUmWQ/viewform?pli=1
