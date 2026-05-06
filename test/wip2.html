@@ -98,3 +98,72 @@ mark {
 
 
   <div class="library"> 
+
+    
+    
+  </div>
+</div>
+
+<script>
+const input = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearBtn");
+const books = document.querySelectorAll(".book");
+const bookCount = document.getElementById("bookCount");
+
+let timeout;
+
+// run search with small delay (fixes freezing)
+input.addEventListener("input", () => {
+  clearTimeout(timeout);
+  timeout = setTimeout(filterBooks, 350);
+});
+
+function filterBooks() {
+  const q = input.value.toLowerCase();
+  clearBtn.style.display = q ? "block" : "none";
+
+  let count = 0;
+
+  books.forEach(b => {
+    const title = b.querySelector(".title");
+    const text = title.textContent;
+
+    title.innerHTML = text; // reset
+
+    if (!q || text.toLowerCase().includes(q)) {
+      if (count < 3000) { // limit results
+        b.style.display = "";
+        count++;
+
+        if (q) {
+          const safeQ = q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+          title.innerHTML = text.replace(
+            new RegExp("(" + safeQ + ")", "i"),
+            "<mark>$1</mark>"
+          );
+        }
+
+      } else {
+        b.style.display = "none";
+      }
+    } else {
+      b.style.display = "none";
+    }
+  });
+
+  bookCount.textContent = "Books: " + count;
+}
+
+function clearSearch() {
+  input.value = "";
+  filterBooks();
+}
+
+// initial count
+window.onload = () => {
+  bookCount.textContent = "Books: " + books.length;
+};
+</script>
+
+</body>
+</html>
