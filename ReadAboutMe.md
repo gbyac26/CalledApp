@@ -35,20 +35,21 @@
 ##### - ~~Instagram feed?~~ DONE
 ##### - ~~Books!~~ DONE
 ##### - ~~Search freeze.~~ DONE
-##### - New Landing Page.
-##### - Add back button to books page
+##### - ~~New Landing Page.~~ DONE
+##### - ~~Add back button to books page.~~ DONE
 
-## Landing Page Ideas
+## Landing Page Ideas.
 ##### - ~~Calander of events / how to scrape called for events.~~ DONE
 #####   - Add more events.
 ##### - ~~Instagram top 3 post embeded.~~ DONE
 #####   - Add actual Instagram links.
 ##### - ~~Possible links / link to library.~~ DONE
 ##### - ~~Background color background: #ffe888;.~~ DONE
-##### - ~~An about GBYAC~~ DONE
+##### - ~~An about GBYAC.~~ DONE
 #####   - ~~Sharing events for Catholics 18-30(ish).~~ DONE
 #####   - ~~Not affiliated with any parish or diocese.~~ DONE
 #####   - ~~Submit an event or join our group!~~ DONE
-##### - add event photos
+##### - ~~Add event photos.~~ DOINE
 
-https://docs.google.com/forms/d/e/1FAIpQLSfOKSmuxzjS7oucfldS486q_jPCTnAGigDZqHCjBiE_RQUmWQ/viewform?pli=1
+## Link For Suggestions.
+##### https://docs.google.com/forms/d/e/1FAIpQLSfOKSmuxzjS7oucfldS486q_jPCTnAGigDZqHCjBiE_RQUmWQ/viewform?pli=1
